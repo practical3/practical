@@ -1,0 +1,110 @@
+Q1.Create a new React application using Create React App and verify its successful launch. 
+                npx create-react-app my-app
+                cd my-app
+                npm start
+
+Q2.Generate a production-ready build of your React application.
+Ans:- import React from 'react'; 
+import './App.css'; 
+function App() { 
+return ( 
+<div className="App"> 
+<header className="App-header"> 
+<p>Hello, TYBCA Students! Welcome to React Development.</p> 
+</header> 
+</div>   );  } 
+export default App;
+4. Learn how to run the React development server on a different port. 
+Ans :- // In package.json, 
+              add "start": "PORT=3001 react-scripts start" to scripts 
+    Then run:  npm start 
+5. Generate a production-ready build of your React application. 
+              :-   npm run build  
+
+
+
+
+
+Q.1Create a custom hook useToggle that switches a boolean value between true and false.
+ // App.js 
+import React from "react"; 
+import useToggle from "./component/useToggle"; 
+function App() { 
+const [isVisible, toggleVisibility] = useToggle(false); 
+return ( 
+<div style={{ textAlign: "center", marginTop: "50px" }}> 
+<h2>Custom Hook Example - useToggle</h2> 
+<button onClick={toggleVisibility}> 
+{isVisible ? "Hide Message" : "Show Message"} 
+</button> 
+{isVisible && <p style={{ marginTop: "20px" }}>Hello! 👋 This message is visible.</p>} 
+</div>  );  } 
+export default App; 
+./component/useToggle.js 
+import { useState } from "react"; 
+function useToggle(initialValue = false) { 
+const [value, setValue] = useState(initialValue); 
+const toggle = () => setValue(!value); 
+return [value, toggle]; 
+}   export default useToggle;
+
+
+Q2.Create a React app with a Products page. Inside it, there should be nested 
+routes for Car and Bike. Show their respective content when the user clicks on the links.
+Ans :-  App.js
+           import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Products from "./Products";
+function App() {
+ return (
+    <Router>
+      <nav style={{ padding: "10px", background: "#eee" }}>
+        <Link to="/products">Products</Link>
+      </nav>
+      <Routes>
+       <Route path="/products/*" element={<Products />} />
+      </Routes>
+    </Router>
+  );  }  export default App;
+Products.js
+import { Link, Routes, Route } from "react-router-dom";
+import Car from "./Car";
+import Bike from "./Bike";
+function Products() {
+  return (
+    <div style={{ padding: "20px" }}>
+      <h2>Products Page</h2>
+ <nav style={{ display: "flex", gap: "15px" }}>
+        <Link to="car">Car</Link>
+        <Link to="bike">Bike</Link>
+      </nav>   {/* Nested Routes */}
+      <Routes>
+        <Route path="car" element={<Car />} />
+ <Route path="bike" element={<Bike />} />
+      </Routes>
+    </div>  );  }  export default Products;
+
+Q3. ) Write a React program to create a simple form where a user can enter their name and 
+display an alert message saying “Hello, {name}” using React state and event handling.
+Ans:- import { useState } from "react";
+           function App() {
+           const [name, setName] = useState("");
+        const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Hello, ${name}`);
+  };
+ return (
+    <div style={{ padding: "20px" }}>
+      <h2>Simple Form</h2>
+   <form onSubmit={handleSubmit}>
+        <label>
+          Enter your name:{" "}
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Type your name"
+          />
+        </label> <button type="submit" style={{ marginLeft: "10px" }}> Submit
+        </button>
+      </form>
+    </div>   );  } export default App;
