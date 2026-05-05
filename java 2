@@ -1,0 +1,51 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class demo01 {
+
+    public static void main(String[] args) {
+
+        // Create frame
+        Frame f = new Frame("MouseListener Demo");
+
+        // Create label
+        Label l = new Label("Welcome to E&TC Department!");
+
+        // Set label properties
+        l.setBounds(80, 100, 220, 30);
+        l.setFont(new Font("Serif", Font.BOLD, 18));
+        l.setForeground(Color.RED);
+
+        // Add MouseListener to the label
+        l.addMouseListener(new MouseListener() {
+
+            public void mouseClicked(MouseEvent e) {
+                l.setText("Mouse Clicked");
+            }
+
+            public void mouseEntered(MouseEvent e) {
+                l.setText("Mouse Entered");
+            }
+
+            public void mouseExited(MouseEvent e) {
+                l.setText("Mouse Exited");
+            }
+
+            public void mousePressed(MouseEvent e) {
+                l.setText("Mouse Pressed");
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                l.setText("Mouse Released");
+            }
+        });
+
+        // Add label to frame
+        f.add(l);
+
+        // Frame properties
+        f.setLayout(null);
+        f.setSize(400, 300);
+        f.setVisible(true);
+    }
+}
