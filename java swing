@@ -1,0 +1,48 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class KeyHandlingSwing extends JFrame implements KeyListener
+{
+    String msg = "";
+
+    KeyHandlingSwing()
+    {
+        setTitle("Key Handling Swing Example");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        addKeyListener(this);
+        setFocusable(true);
+        setVisible(true);
+    }
+
+    public void keyPressed(KeyEvent e)
+    {
+        msg = "Key Pressed";
+        repaint();
+    }
+
+    public void keyReleased(KeyEvent e)
+    {
+        msg = "Key Released";
+        repaint();
+    }
+
+    public void keyTyped(KeyEvent e)
+    {
+        msg = "Key Typed";
+        repaint();
+    }
+
+    public void paint(Graphics g)
+    {
+        super.paint(g);
+        g.drawString(msg, 150, 150);
+    }
+
+    public static void main(String[] args)
+    {
+        new KeyHandlingSwing();
+    }
+}
